@@ -1,33 +1,65 @@
+  <style>
+body {
+  background-color: #c9c3bf;
+}
+.post {
+ box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 100%;
+    margin:auto;
+    margin-top: 1em;
+    padding:1em;  
+    background-color: white;
+}
+
+.post ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    width: 50%
+}
+
+.post li {
+    float: left;
+}
+
+.post li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.post li a:hover {
+    background-color: #8e8c8a;
+    color: white;
+}
+
+
+</style>
+
   <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Ideas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.user.email %></td>
-        <td><%= link_to 'Show', post %></td>
+    <div class="post">
+        <h4><%= post.title %></h4> 
+        <p><i>Idea by: <%= post.user.email %></i></p>
+        <hr>
+        <p><%= post.content %></p><br>
+        <ul>        
+        <li><%= link_to 'Show', post %></li>
         <% if post.user_id == current_user.id %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <li><%= link_to 'Edit', edit_post_path(post) %></li>
+        <li><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
         <% end %>
-      </tr>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
 <br>
-
-<%= link_to 'New Post', new_post_path %>

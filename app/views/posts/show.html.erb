@@ -1,24 +1,59 @@
+<style>
+body {
+  background-color: #c9c3bf;
+}
+.post {
+ box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 100%;
+    margin:auto;
+    margin-top: 1em;
+    padding:1em;  
+    background-color: white;
+}
+
+.komentarji {
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin:5px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding:2em; 
+    background: #b2b0ae;
+    }
+
+ .komentar {
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding:2em;
+    background: white;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.7em;
+    }   
+
+</style>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+	<div class="post">
+        <h4><%= @post.title %></h4> 
+        <p><i>Idea by: <%= @post.user.email %></i></p>
+        <hr>
+        <p><%= @post.content %></p><br>
+        <hr>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<h2>Komentarji (<%= @post.comments.count %>)</h2>
+<div class="komentarji">
+<h4>Komentarji (<%= @post.comments.count %>)</h4>
+<div class="komentar">
 	<%= render @post.comments %>
+</div>
+<div class="dodaj_kom">
 	<h3>Add a comment </h3>
 	<%= render "comments/form" %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+</div>

@@ -33,9 +33,13 @@
 
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "New idea", "posts/new"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+             <% if user_signed_in? %>
+            <li><%= link_to "New idea", new_post_path %></li>
+            <li><%= link_to 'My profile', edit_user_registration_path  %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
           </ul>
         </div>
       </div>
@@ -48,21 +52,20 @@
           <%= yield %>
         </div>
         <div class="col-lg-3">
-          <div class="well sidebar-nav">
+          <!--<div class="well sidebar-nav">
             <h3>Sidebar</h3>
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "New idea", "new"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <% if user_signed_in? %>
+              <li><%= link_to "New idea", new_post_path %></li>
+            <li><%= link_to 'My profile', edit_user_registration_path  %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
             </ul>
-          </div><!--/.well -->
+          </div>--> <!--/.well -->
         </div><!--/span-->
       </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2018</p>
-      </footer>
 
     </div> <!-- /container -->
 
