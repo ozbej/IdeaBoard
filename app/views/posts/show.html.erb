@@ -45,6 +45,7 @@ body {
         <p><i>Idea by: <%= @post.user.email %></i></p>
         <hr>
         <p><%= @post.content %></p><br>
+        <%= image_tag @post.image_url.to_s %>
         <hr>
 </p>
 
